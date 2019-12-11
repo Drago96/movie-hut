@@ -5,7 +5,9 @@ import { FieldProps } from 'formik';
 
 import useStyles from './useStyles';
 
-const SearchField: React.FC<FieldProps> = ({ field }) => {
+type Props = FieldProps;
+
+const SearchField: React.FC<Props> = ({ field }) => {
   const styles = useStyles();
 
   return (

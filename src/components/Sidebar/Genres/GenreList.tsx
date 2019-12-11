@@ -8,14 +8,13 @@ import {
 } from '@material-ui/core';
 import { ExpandLess, ExpandMore, MovieFilter } from '@material-ui/icons';
 
+import GenreListType from 'types/GenreList';
 import useStyles from '../useStyles';
-import GenreListItem, { Genre } from './GenreListItem';
+import GenreListItem from './GenreListItem';
 
-type Props = {
-  genres: [Genre];
-};
+type Props = GenreListType;
 
-const GenresList: React.FC<Props> = memo(({ genres }) => {
+const GenreList: React.FunctionComponent<Props> = memo(({ genres }) => {
   const [open, setOpen] = useState(false);
   const styles = useStyles();
 
@@ -41,8 +40,8 @@ const GenresList: React.FC<Props> = memo(({ genres }) => {
   );
 });
 
-GenresList.defaultProps = {
+GenreList.defaultProps = {
   genres: []
 } as any;
 
-export default GenresList;
+export default GenreList;

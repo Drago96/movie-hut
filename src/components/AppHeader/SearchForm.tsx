@@ -6,12 +6,18 @@ import { trim } from 'lodash';
 import useQueryParams from 'hooks/useQueryParams';
 import SearchField from './SearchField';
 
+type FormValues = {
+  searchQuery: string | string[];
+};
+
 const SearchForm: React.FC = () => {
-  const { query } = useQueryParams();
+  const {
+    params: { query }
+  } = useQueryParams();
   const history = useHistory();
 
-  const handleSubmit = ({ searchQuery }: any) => {
-    if (trim(searchQuery) === '') {
+  const handleSubmit = ({ searchQuery }: FormValues) => {
+    if (trim(searchQuery as string) === '') {
       return;
     }
 

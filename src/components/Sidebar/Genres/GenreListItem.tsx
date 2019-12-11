@@ -2,12 +2,8 @@ import React from 'react';
 import { ListItem, ListItemText } from '@material-ui/core';
 import { useHistory } from 'react-router';
 
+import Genre from 'types/Genre';
 import useStyles from '../useStyles';
-
-export type Genre = {
-  id: number;
-  name: string;
-};
 
 type Props = {
   genre: Genre;

@@ -1,11 +1,18 @@
-import { createEpicMiddleware } from 'redux-observable';
-import { configureStore } from '@reduxjs/toolkit';
+import { createEpicMiddleware, EpicMiddleware } from 'redux-observable';
+import { configureStore, AnyAction } from '@reduxjs/toolkit';
 
+import Services from 'types/Services';
 import movieApi from 'services/api/movieApi';
+import { ApplicationState } from 'types/Store';
 import epics from './epics/epics';
 import reducers from './reducers/reducers';
 
-const epicMiddleware = createEpicMiddleware({
+const epicMiddleware: EpicMiddleware<
+  AnyAction,
+  AnyAction,
+  ApplicationState,
+  Services
+> = createEpicMiddleware({
   dependencies: { movieApi }
 });
 

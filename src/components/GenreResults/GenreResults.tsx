@@ -1,16 +1,12 @@
 import React from 'react';
+import { useParams } from 'react-router';
 
-import useQueryParams from 'hooks/useQueryParams';
-import genreResultsSlice from 'store/slices/genreResultsSlice';
-import useRequestSlice from 'hooks/useRequestSlice';
+import Movies from 'components/Movies/Movies';
 
-const SearchResults: React.FC = () => {
-  const { genre } = useQueryParams();
-  useRequestSlice(genreResultsSlice, {
-    genre: genre as string
-  });
+const GenreResults: React.FC = () => {
+  const { genre } = useParams();
 
-  return null;
+  return <Movies url="discover/movie" params={{ with_genres: genre }} />;
 };
 
-export default SearchResults;
+export default GenreResults;

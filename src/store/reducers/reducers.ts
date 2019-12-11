@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import searchMoviesSlice from 'store/slices/searchMoviesSlice';
+import movieListSlice from 'store/slices/movieListSlice';
 import genresSlice from 'store/slices/genresSlice';
-import genreResultsSlice from 'store/slices/genreResultsSlice';
+import loadingOverlaySlice from 'store/slices/loadingOverlaySlice';
 
 export default combineReducers({
-  searchMovies: searchMoviesSlice.reducer,
+  movieList: movieListSlice.reducer,
   genres: genresSlice.reducer,
-  genreResults: genreResultsSlice.reducer
+  loadingOverlay: loadingOverlaySlice.reducer
 });

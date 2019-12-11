@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { isEqual } from 'lodash';
 
-const useDeepEqualRef = (nextValue: any) => {
+const useDeepEqualRef = <T>(nextValue: T) => {
   const ref = useRef(nextValue);
 
   if (!isEqual(nextValue, ref.current)) {
