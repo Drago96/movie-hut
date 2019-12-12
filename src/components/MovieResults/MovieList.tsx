@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
 
 import PaginationType from 'types/Pagination';
-import Movie from 'types/Movie';
+import MovieListItemType from 'types/MovieListItem';
 import Paginator from './Paginator';
 import MovieListItem from './MovieListItem';
 
 type Props = PaginationType & {
-  movies: [Movie];
+  movies: [MovieListItemType];
 };
 
 const MovieList: React.FC<Props> = memo(({ movies, page, totalPages }) => {

@@ -10,7 +10,8 @@ const useStyles = makeStyles(theme => {
     title: {
       '&:hover': {
         textDecoration: 'none'
-      }
+      },
+      paddingBottom: theme.spacing(1)
     },
     content: {
       display: 'flex',

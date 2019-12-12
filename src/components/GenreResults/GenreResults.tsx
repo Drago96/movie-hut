@@ -1,12 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router';
 
-import Movies from 'components/Movies/Movies';
+import MovieResults from 'components/MovieResults/MovieResults';
 
 const GenreResults: React.FC = () => {
-  const { genre } = useParams();
+  const { id } = useParams();
 
-  return <Movies url="discover/movie" params={{ with_genres: genre }} />;
+  return <MovieResults url="discover/movie" params={{ withGenres: id }} />;
 };
 
 export default GenreResults;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import useQueryParams from 'hooks/useQueryParams';
-import Movies from 'components/Movies/Movies';
+import MovieResults from 'components/MovieResults/MovieResults';
 
 const SearchResults: React.FC = () => {
   const {
@@ -9,7 +9,7 @@ const SearchResults: React.FC = () => {
   } = useQueryParams();
 
   return (
-    <Movies url="search/movie" params={{ query: query as string }} />
+    <MovieResults url="search/movie" params={{ query: query as string }} />
   );
 };
 

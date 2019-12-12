@@ -8,7 +8,7 @@ import MovieList from './MovieList';
 
 type Props = UseMovieListSliceOptions;
 
-const Movies: React.FC<Props> = ({ url, params }) => {
+const MovieResults: React.FC<Props> = ({ url, params }) => {
   const { data } = useMovieListSlice({
     url,
     params
@@ -31,4 +31,4 @@ const Movies: React.FC<Props> = ({ url, params }) => {
   );
 };
 
-export default Movies;
+export default MovieResults;

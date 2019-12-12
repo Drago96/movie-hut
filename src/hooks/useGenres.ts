@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { filter, get } from 'lodash';
 
+import Genre from 'types/Genre';
 import { ApplicationState } from 'types/Store';
 
 const useGenres = (genreIds: [number]) => {
@@ -10,7 +11,7 @@ const useGenres = (genreIds: [number]) => {
     )
   );
 
-  return genres;
+  return genres as [Genre];
 };
 
 export default useGenres;

@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 
 import useGenres from 'hooks/useGenres';
-import { Typography } from '@material-ui/core';
+import GenreList from 'components/Movie/GenreList';
 
 type Props = {
   genreIds: [number];
@@ -10,11 +10,7 @@ type Props = {
 const Genres: React.FC<Props> = memo(({ genreIds }) => {
   const genres = useGenres(genreIds);
 
-  return (
-    <Typography variant="body1" color="textSecondary" component="div">
-      Genres: {genres.map(genre => genre.name).join(', ')}
-    </Typography>
-  );
+  return <GenreList genres={genres} />;
 });
 
 export default Genres;

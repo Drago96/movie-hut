@@ -16,13 +16,13 @@ type Props = GenreListType;
 
 const GenreList: React.FunctionComponent<Props> = memo(({ genres }) => {
   const [open, setOpen] = useState(false);
-  const styles = useStyles();
+  const classes = useStyles();
 
   const toggleOpen = () => setOpen(!open);
 
   return (
     <>
-      <ListItem button onClick={toggleOpen} className={styles.listItem}>
+      <ListItem button onClick={toggleOpen} className={classes.listItem}>
         <ListItemIcon>
           <MovieFilter />
         </ListItemIcon>

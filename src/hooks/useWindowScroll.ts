@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 
 const useWindowScroll = (shouldScroll: boolean, top: number) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (shouldScroll) {
       window.scrollTo({ top, behavior: 'smooth' });
     }
