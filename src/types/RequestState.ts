@@ -1,4 +1,4 @@
-type RequestState<T extends {} = any> = {
+type RequestState<T> = {
   data: T | null;
   isLoading: boolean;
   error: string | null;

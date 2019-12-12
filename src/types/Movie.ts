@@ -3,6 +3,8 @@ type Movie = {
   posterPath: string;
   title: string;
   overview: string;
+  releaseDate: string;
+  genreIds: [number];
 };
 
 export default Movie;

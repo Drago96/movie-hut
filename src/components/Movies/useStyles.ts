@@ -7,10 +7,21 @@ const useStyles = makeStyles(theme => {
       flexDirection: 'row',
       marginBottom: theme.spacing(5)
     },
+    title: {
+      '&:hover': {
+        textDecoration: 'none'
+      }
+    },
     content: {
       display: 'flex',
       flexDirection: 'column',
-      padding: theme.spacing(2)
+      padding: theme.spacing(2),
+      '&:last-child': {
+        paddingBottom: theme.spacing(2)
+      }
+    },
+    description: {
+      height: '100%'
     },
     poster: {
       width: 200,
