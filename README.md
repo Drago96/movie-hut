@@ -1,44 +1,36 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Movie Hut
 
-## Available Scripts
+Movie Hut is a website where you can find new movies that suit your taste with ease.
 
-In the project directory, you can run:
+Browse movies, search by keywords, or filter by genre - and enjoy your personalised watchlist!
 
-### `npm start`
+![Search](/images/search.png)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Sign In](/images/sign-in.png)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![Search](/images/theme.png)
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- npm install
+- npm start
+- visit localhost:3000
+- enjoy!
 
-### `npm run build`
+## Architecture
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The project is build using React with Typescript. It is split into separate folders, based on the separation of concerns.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- React components are split into their own subfolders within the base `components` folder, based on common functionality. Within the folder of each component there can also be other data tightly coupled with the component itself - hooks, styles and contexts.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Internal application state is stored using Redux. All redux logic is placed inside the `store` folder. The `reduxjs/toolkit` library has been used to minimize the boilerplate surrounding Redux.
 
-### `npm run eject`
+- Many custom hooks have been extracted within the `hooks` folder. These hooks vary from DOM manipulation to Redux store access and many more.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- The layer for communication with external APIs is stored within the `services` folder. Throughout the project, two external APIs have been used:
+  - https://themoviedb.org - Used for fetching data about various movies.
+  - Firestore - Used for storing application users and their watchlists.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Other key points include:
+- Material UI is used for building the application's UI layer
+- Formik is used for form mannagement
