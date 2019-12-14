@@ -41,6 +41,15 @@ const useStyles = makeStyles(theme => {
       [theme.breakpoints.up('md')]: {
         width: 400
       }
+    },
+    grow: {
+      flexGrow: 1
+    },
+    accountIcon: {
+      marginRight: theme.spacing()
+    },
+    menu: {
+      minWidth: 150
     }
   });
 });

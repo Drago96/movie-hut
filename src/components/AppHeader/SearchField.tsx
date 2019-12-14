@@ -8,18 +8,18 @@ import useStyles from './useStyles';
 type Props = FieldProps;
 
 const SearchField: React.FC<Props> = ({ field }) => {
-  const styles = useStyles();
+  const classes = useStyles();
 
   return (
-    <div className={styles.search}>
-      <div className={styles.searchIcon}>
+    <div className={classes.search}>
+      <div className={classes.searchIcon}>
         <Search />
       </div>
       <InputBase
         {...field}
         classes={{
-          root: styles.inputRoot,
-          input: styles.inputInput
+          root: classes.inputRoot,
+          input: classes.inputInput
         }}
         placeholder="Search"
       />

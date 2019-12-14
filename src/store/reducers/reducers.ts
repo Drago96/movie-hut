@@ -1,13 +1,19 @@
 import { combineReducers } from 'redux';
 
-import movieListSlice from 'store/slices/movieListSlice';
-import genresSlice from 'store/slices/genresSlice';
+import movieResultsSlice from 'store/slices/movieResultsSlice';
+import genreListSlice from 'store/slices/genreListSlice';
 import loadingOverlaySlice from 'store/slices/loadingOverlaySlice';
-import movieSlice from 'store/slices/movieSlice';
+import movieDetailsSlice from 'store/slices/movieDetailsSlice';
+import authenticationRequestSlice from 'store/slices/authenticationRequestSlice';
+import homeDataSlice from 'store/slices/homeDataSlice';
+import authenticationReducer from './authenticationReducer';
 
 export default combineReducers({
-  movieList: movieListSlice.reducer,
-  genres: genresSlice.reducer,
+  movieResults: movieResultsSlice.reducer,
+  genreList: genreListSlice.reducer,
   loadingOverlay: loadingOverlaySlice.reducer,
-  movie: movieSlice.reducer
+  movieDetails: movieDetailsSlice.reducer,
+  authenticationRequest: authenticationRequestSlice.reducer,
+  authentication: authenticationReducer,
+  homeData: homeDataSlice.reducer
 });

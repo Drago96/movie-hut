@@ -1,7 +1,7 @@
 import Pagination from './Pagination';
 
 type DataList<T> = Pagination & {
-  results: [T];
+  results: T[];
   totalResults: number;
 };
 

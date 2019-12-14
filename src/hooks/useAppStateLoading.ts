@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import { ApplicationState } from 'types/Store';
 
 const useAppStateLoading = () => {
-  const genresLoading = useSelector(
-    (state: ApplicationState) => state.genres.isLoading
+  const authInitialized = useSelector(
+    (state: ApplicationState) => state.authentication.initialized
   );
 
-  const appStateLoading = genresLoading;
+  const appStateLoading = !authInitialized;
 
   return appStateLoading;
 };

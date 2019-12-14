@@ -1,17 +1,25 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useCallback } from 'react';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 
-import RequestState from 'types/RequestState';
-import useDeepEqualRef from './useDeepEqualRef';
+import ResponseState from 'types/ResponseState';
 import useLoadingOverlay from './useLoadingOverlay';
-import useWindowScroll from './useWindowScroll';
 
-export type UseRequestSliceResult = RequestState<any>;
+type RequestParams =
+  | undefined
+  | {
+      [key: string]: any;
+    };
+
+export type ResponseResult = ResponseState<any> & {
+  success: boolean;
+};
+
+export type UseRequestSliceResult = [
+  (params: RequestParams) => void,
+  ResponseResult
+];
 
 export type UseRequestSliceOptions = {
-  params?: {
-    [key: string]: any;
-  };
   showLoadingOverlay?: boolean;
   scrollToTop?: boolean;
 };
@@ -22,15 +30,18 @@ const useRequestSlice = <T extends any>(
 ): UseRequestSliceResult => {
   const dispatch = useDispatch();
 
-  const isLoading = useSelector((state: any) => state[slice.name].isLoading);
-  const error = useSelector((state: any) => state[slice.name].error);
-  const data = useSelector((state: any) => state[slice.name].data);
+  const { isLoading, error, data } = useSelector(
+    (state: any) => state[slice.name],
+    shallowEqual
+  );
+  const success = !isLoading && Boolean(data);
 
-  const paramsForDispatch = useDeepEqualRef(options.params);
-
-  useEffect(() => {
-    dispatch(slice.actions.start(paramsForDispatch));
-  }, [dispatch, slice, paramsForDispatch]);
+  const initiateRequest = useCallback(
+    (params: RequestParams) => {
+      dispatch(slice.actions.start(params));
+    },
+    [dispatch, slice]
+  );
 
   useEffect(() => {
     return () => {
@@ -39,13 +50,24 @@ const useRequestSlice = <T extends any>(
   }, [dispatch, slice]);
 
   useLoadingOverlay(options.showLoadingOverlay && isLoading);
-  useWindowScroll(Boolean(options.scrollToTop) && !isLoading, 0);
 
-  return {
-    isLoading,
-    error,
-    data
-  };
+  const shouldScroll = Boolean(options.scrollToTop) && !isLoading;
+
+  useEffect(() => {
+    if (shouldScroll) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [shouldScroll]);
+
+  return [
+    initiateRequest,
+    {
+      isLoading,
+      error,
+      data,
+      success
+    }
+  ];
 };
 
 export default useRequestSlice;

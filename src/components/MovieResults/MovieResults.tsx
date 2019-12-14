@@ -3,12 +3,19 @@ import React from 'react';
 import useMovieListSlice, {
   UseMovieListSliceOptions
 } from 'hooks/useMovieListSlice';
-import NoResultsFound from 'components/UI/NoResultsFound/NoResultsFound';
+import Heading from 'components/UI/Heading/Heading';
 import MovieList from './MovieList';
+import useStyles from './useStyles';
 
-type Props = UseMovieListSliceOptions;
+type OwnProps = {
+  heading?: string;
+};
 
-const MovieResults: React.FC<Props> = ({ url, params }) => {
+type Props = UseMovieListSliceOptions & OwnProps;
+
+const MovieResults: React.FC<Props> = ({ url, params, heading }) => {
+  const classes = useStyles();
+
   const { data } = useMovieListSlice({
     url,
     params
@@ -18,16 +25,16 @@ const MovieResults: React.FC<Props> = ({ url, params }) => {
     return null;
   }
 
-  if (data.totalResults === 0) {
-    return <NoResultsFound />;
-  }
-
   return (
-    <MovieList
-      movies={data.results}
-      page={data.page}
-      totalPages={data.totalPages}
-    />
+    <>
+      {heading && <Heading className={classes.heading}>{heading}</Heading>}
+      <MovieList
+        movies={data.results}
+        page={data.page}
+        totalPages={data.totalPages}
+        totalResults={data.totalResults}
+      />
+    </>
   );
 };
 

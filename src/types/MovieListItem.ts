@@ -4,7 +4,7 @@ type MovieListItem = {
   title: string;
   overview: string;
   releaseDate: string;
-  genreIds: [number];
+  genreIds: number[];
 };
 
 export default MovieListItem;

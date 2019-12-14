@@ -29,6 +29,9 @@ const useStyles = makeStyles(theme => {
       height: 300,
       minWidth: 200
     },
+    heading: {
+      marginBottom: theme.spacing(3)
+    },
     pagination: {
       display: 'inline-block',
       paddingLeft: 0,

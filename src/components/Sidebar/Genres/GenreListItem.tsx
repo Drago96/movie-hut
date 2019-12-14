@@ -11,12 +11,12 @@ type Props = {
 
 const GenreListItem: React.FC<Props> = ({ genre }) => {
   const history = useHistory();
-  const styles = useStyles();
+  const classes = useStyles();
 
   return (
     <ListItem
       button
-      className={styles.nestedItem}
+      className={classes.nestedItem}
       onClick={() => history.push(`/genre/${genre.id}`)}
     >
       <ListItemText primary={genre.name} />

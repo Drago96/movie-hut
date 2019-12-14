@@ -1,4 +1,4 @@
-import React, { useState, useRef, ElementType } from 'react';
+import React, { ElementType } from 'react';
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import {
   Typography,
@@ -8,24 +8,16 @@ import {
   TableRow,
   TableCell,
   TableHead,
-  TableBody,
-  Box
+  TableBody
 } from '@material-ui/core';
 
-import personNotFound from 'assets/images/person-not-found.gif';
-import ImgWithFallback from 'components/UI/ImgWithFallback/ImgWithFallback';
-import createMovieImageUrl from 'utilities/createMovieImageUrl';
+import Heading from 'components/UI/Heading/Heading';
 import useStyles from './useStyles';
-
-export type Person = {
-  id: number;
-  name: string;
-  profilePath: string;
-  role: string;
-};
+import usePersonTable from './usePersonTable';
+import PersonTableRow, { Person } from './PersonTableRow';
 
 type Props = {
-  persons: [Person];
+  persons: Person[];
   tableIcon: ElementType;
   tableHeading: string;
   roleColumnName: string;
@@ -37,47 +29,40 @@ const PersonTable: React.FC<Props> = ({
   tableIcon,
   roleColumnName
 }) => {
-  const [expanded, setExpanded] = useState(false);
-  const tableRef = useRef<HTMLDivElement>(null);
+  const {
+    tableRef,
+    expand,
+    toggleExpand,
+    handleExpanding,
+    handleExpanded,
+    scrollToTop
+  } = usePersonTable();
+
   const classes = useStyles();
-
-  const toggleExpanded = () => setExpanded(!expanded);
-  const scrollToTable = () => {
-    if (!tableRef.current) {
-      return;
-    }
-
-    const offsetHeight = 80;
-
-    window.scrollTo({
-      top: tableRef.current.offsetTop - offsetHeight,
-      behavior: 'smooth'
-    });
-  };
 
   const TableIcon = tableIcon;
 
   return (
     <div className={classes.personTable} ref={tableRef}>
-      <Box
-        onClick={toggleExpanded}
-        className={classes.tableHeading}
-        borderBottom={1}
+      <Heading
+        onClick={toggleExpand}
+        classes={{
+          typography: classes.tableHeading
+        }}
       >
         <TableIcon className={classes.tableHeadingIcon} />
-        <Typography variant="h4" component="h4" color="textPrimary">
-          {tableHeading}
-        </Typography>
-        {expanded ? (
+        <span>{tableHeading}</span>
+        {expand ? (
           <ExpandLess className={classes.tableHeadingIcon} />
         ) : (
           <ExpandMore className={classes.tableHeadingIcon} />
         )}
-      </Box>
+      </Heading>
       <Collapse
         timeout="auto"
-        onEntered={scrollToTable}
-        in={expanded}
+        onEntering={handleExpanding}
+        onEntered={handleExpanded}
+        in={expand}
       >
         <Paper>
           <Table aria-label="simple table">
@@ -90,21 +75,18 @@ const PersonTable: React.FC<Props> = ({
             </TableHead>
             <TableBody>
               {persons.map(person => (
-                <TableRow key={person.id}>
-                  <TableCell>
-                    <ImgWithFallback
-                      src={createMovieImageUrl({
-                        relativeUrl: person.profilePath,
-                        width: 200
-                      })}
-                      className={classes.personImage}
-                      fallbackUrl={personNotFound}
-                    />
-                  </TableCell>
-                  <TableCell>{person.name}</TableCell>
-                  <TableCell>{person.role}</TableCell>
-                </TableRow>
+                <PersonTableRow key={person.id} person={person} />
               ))}
+              <TableRow>
+                <TableCell colSpan={3}>
+                  <Typography
+                    className={classes.backToTopLink}
+                    onClick={scrollToTop}
+                  >
+                    Back to Top
+                  </Typography>
+                </TableCell>
+              </TableRow>
             </TableBody>
           </Table>
         </Paper>

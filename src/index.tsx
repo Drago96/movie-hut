@@ -9,8 +9,11 @@ import './index.scss';
 import store from 'store/store';
 import theme from 'styles/theme';
 import App from 'components/App';
+import { initAuthentication } from 'store/actions/authenticationActions';
 
 import * as serviceWorker from './serviceWorker';
+
+store.dispatch(initAuthentication());
 
 ReactDOM.render(
   <Provider store={store}>

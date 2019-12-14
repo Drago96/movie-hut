@@ -3,15 +3,18 @@ import { from } from 'rxjs';
 import MovieList from 'types/MovieList';
 import createRequestSlice from './utilities/createRequestSlice';
 
-type MovieListRequestPayload = {
+type MovieResultsRequestPayload = {
   url: string;
   params: {
     [key: string]: string;
   };
 };
 
-const movieListSlice = createRequestSlice<MovieListRequestPayload, MovieList>({
-  name: 'movieList',
+const movieResultsSlice = createRequestSlice<
+  MovieResultsRequestPayload,
+  MovieList
+>({
+  name: 'movieResults',
   requestHandler: ({
     action: {
       payload: { url, ...params }
@@ -23,4 +26,4 @@ const movieListSlice = createRequestSlice<MovieListRequestPayload, MovieList>({
     )
 });
 
-export default movieListSlice;
+export default movieResultsSlice;

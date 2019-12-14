@@ -9,7 +9,11 @@ const SearchResults: React.FC = () => {
   } = useQueryParams();
 
   return (
-    <MovieResults url="search/movie" params={{ query: query as string }} />
+    <MovieResults
+      url="search/movie"
+      params={{ query: query as string }}
+      heading={`Displaying results for: ${query}`}
+    />
   );
 };
 

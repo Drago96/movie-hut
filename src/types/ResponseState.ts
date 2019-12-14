@@ -1,7 +1,7 @@
-type RequestState<T> = {
+type ResponseState<T> = {
   data: T | null;
   isLoading: boolean;
   error: string | null;
 };
 
-export default RequestState;
+export default ResponseState;

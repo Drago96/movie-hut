@@ -5,12 +5,12 @@ import Link from 'components/UI/Link/Link';
 import useStyles from './useStyles';
 
 const Logo: React.FC = () => {
-  const styles = useStyles();
+  const classes = useStyles();
 
   return (
     <>
-      <Videocam className={styles.logoIcon} />
-      <Link to="/" color="inherit" variant="h6" className={styles.title}>
+      <Videocam className={classes.logoIcon} />
+      <Link to="/" color="inherit" variant="h6" className={classes.title}>
         MovieHut
       </Link>
     </>

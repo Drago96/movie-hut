@@ -6,7 +6,7 @@ import Genre from 'types/Genre';
 import useStyles from './useStyles';
 
 type Props = {
-  genres: [Genre];
+  genres: Genre[];
   clickable?: boolean;
 };
 

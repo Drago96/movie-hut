@@ -4,7 +4,7 @@ type Movie = {
   id: number;
   budget: number;
   title: string;
-  genres: [Genre];
+  genres: Genre[];
   homepage: string;
   imdbId: string;
   overview: string;

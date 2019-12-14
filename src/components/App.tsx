@@ -1,20 +1,16 @@
 import React from 'react';
 
-import AppHeader from 'components/AppHeader/AppHeader';
-import Sidebar from 'components/Sidebar/Sidebar';
-
-import Main from './Main/Main';
-import LoadingOverlay from './UI/LoadingOverlay/LoadingOverlay';
+import useAppStateLoading from 'hooks/useAppStateLoading';
+import Body from './Body/Body';
 
 const App: React.FC = () => {
-  return (
-    <>
-      <AppHeader />
-      <Sidebar />
-      <LoadingOverlay />
-      <Main />
-    </>
-  );
+  const appStateLoading = useAppStateLoading();
+
+  if (appStateLoading) {
+    return null;
+  }
+
+  return <Body />;
 };
 
 export default App;

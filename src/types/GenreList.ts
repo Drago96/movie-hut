@@ -1,7 +1,7 @@
 import Genre from './Genre';
 
 type GenreList = {
-  genres: [Genre];
+  genres: Genre[];
 };
 
 export default GenreList;

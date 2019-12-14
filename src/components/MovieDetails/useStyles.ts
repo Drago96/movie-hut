@@ -70,20 +70,21 @@ const useStyles = makeStyles(theme => {
       width: '20%'
     },
     tableHeading: {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
       cursor: 'pointer',
       '& *': {
         marginRight: theme.spacing()
       }
     },
     tableHeadingIcon: {
-      fontSize: '2.5em'
+      fontSize: '1em'
     },
     personTable: {
       marginTop: theme.spacing(5),
       marginBottom: theme.spacing(5)
+    },
+    backToTopLink: {
+      cursor: 'pointer',
+      display: 'inline-block'
     }
   });
 });

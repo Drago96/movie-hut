@@ -3,6 +3,8 @@ import { configureStore, AnyAction } from '@reduxjs/toolkit';
 
 import Services from 'types/Services';
 import movieApi from 'services/api/movieApi';
+import firebaseApi from 'services/api/firebaseApi';
+import * as authenticationService from 'services/authenticationService';
 import { ApplicationState } from 'types/Store';
 import epics from './epics/epics';
 import reducers from './reducers/reducers';
@@ -13,7 +15,7 @@ const epicMiddleware: EpicMiddleware<
   ApplicationState,
   Services
 > = createEpicMiddleware({
-  dependencies: { movieApi }
+  dependencies: { movieApi, firebaseApi, authenticationService }
 });
 
 const store = configureStore({

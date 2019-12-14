@@ -1,12 +1,12 @@
 import React from 'react';
 import { get } from 'lodash';
 
-import genresSlice from 'store/slices/genresSlice';
-import useRequestSlice from 'hooks/useRequestSlice';
+import genreListSlice from 'store/slices/genreListSlice';
+import useInitiateRequestSlice from 'hooks/useInitiateRequestSlice';
 import GenreList from './GenreList';
 
 const Genres: React.FC = () => {
-  const { data } = useRequestSlice(genresSlice);
+  const { data } = useInitiateRequestSlice(genreListSlice);
 
   return <GenreList genres={get(data, 'genres')} />;
 };

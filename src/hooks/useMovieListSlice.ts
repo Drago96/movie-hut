@@ -1,16 +1,18 @@
 import Modify from 'types/Modify';
 import MovieList from 'types/MovieList';
-import movieListSlice from 'store/slices/movieListSlice';
-import useRequestSlice, {
-  UseRequestSliceOptions,
-  UseRequestSliceResult
-} from './useRequestSlice';
+import movieResultsSlice from 'store/slices/movieResultsSlice';
+import useInitiateRequestSlice, {
+  UseInitiateRequestSliceOptions
+} from './useInitiateRequestSlice';
+import { ResponseResult } from './useRequestSlice';
 import useQueryParams from './useQueryParams';
 
-export type UseMovieListSliceOptions = { url: string } & UseRequestSliceOptions;
+export type UseMovieListSliceOptions = {
+  url: string;
+} & UseInitiateRequestSliceOptions;
 
 type UseMovieListSliceResult = Modify<
-  UseRequestSliceResult,
+  ResponseResult,
   {
     data: MovieList;
   }
@@ -27,7 +29,7 @@ const useMovieListSlice: UseMovieListSlice = (
     params: { page }
   } = useQueryParams();
 
-  return useRequestSlice(movieListSlice, {
+  return useInitiateRequestSlice(movieResultsSlice, {
     params: { url, page, ...params },
     showLoadingOverlay: true,
     scrollToTop: true

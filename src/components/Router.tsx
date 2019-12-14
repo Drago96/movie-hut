@@ -5,6 +5,7 @@ import Home from './Home/Home';
 import SearchResults from './SearchResults/SearchResults';
 import GenreResults from './GenreResults/GenreResults';
 import MovieDetails from './MovieDetails/MovieDetails';
+import NotFound from './UI/NotFound/NotFound';
 
 const Router: React.FC = () => (
   <Switch>
@@ -19,6 +20,9 @@ const Router: React.FC = () => (
     </Route>
     <Route exact path="/movie/:id">
       <MovieDetails />
+    </Route>
+    <Route>
+      <NotFound />
     </Route>
   </Switch>
 );

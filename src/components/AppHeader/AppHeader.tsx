@@ -3,17 +3,19 @@ import { AppBar, Toolbar } from '@material-ui/core';
 
 import Logo from './Logo';
 import SearchForm from './SearchForm';
-
 import useStyles from './useStyles';
+import Actions from './Actions';
 
 const AppHeader: React.FC = () => {
-  const styles = useStyles();
+  const classes = useStyles();
 
   return (
-    <AppBar className={styles.appBar} position="fixed">
+    <AppBar className={classes.appBar} position="fixed">
       <Toolbar>
         <Logo />
         <SearchForm />
+        <div className={classes.grow} />
+        <Actions />
       </Toolbar>
     </AppBar>
   );

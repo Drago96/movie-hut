@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Collapse,
   List,
@@ -12,9 +12,9 @@ import GenreListType from 'types/GenreList';
 import useStyles from '../useStyles';
 import GenreListItem from './GenreListItem';
 
-type Props = GenreListType;
+type Props = Partial<GenreListType>;
 
-const GenreList: React.FunctionComponent<Props> = memo(({ genres }) => {
+const GenreList: React.FC<Props> = ({ genres }) => {
   const [open, setOpen] = useState(false);
   const classes = useStyles();
 
@@ -31,17 +31,17 @@ const GenreList: React.FunctionComponent<Props> = memo(({ genres }) => {
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List>
-          {genres.map(genre => (
+          {genres?.map(genre => (
             <GenreListItem key={genre.id} genre={genre} />
           ))}
         </List>
       </Collapse>
     </>
   );
-});
+};
 
 GenreList.defaultProps = {
   genres: []
-} as any;
+};
 
 export default GenreList;

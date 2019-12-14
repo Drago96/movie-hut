@@ -5,17 +5,17 @@ import useStyles from './useStyles';
 import Genres from './Genres/Genres';
 
 const Sidebar: React.FC = () => {
-  const styles = useStyles();
+  const classes = useStyles();
 
   return (
     <Drawer
-      className={styles.drawer}
+      className={classes.drawer}
       variant="permanent"
       classes={{
-        paper: styles.drawerPaper
+        paper: classes.drawerPaper
       }}
     >
-      <div className={styles.toolbar} />
+      <div className={classes.toolbar} />
       <Genres />
     </Drawer>
   );

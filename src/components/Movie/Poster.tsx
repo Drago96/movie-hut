@@ -21,6 +21,7 @@ const Poster: React.FC<Props> = ({ posterPath, title, width, ...props }) => {
         relativeUrl: posterPath
       })}
       alt={title}
+      title={title}
       fallbackUrl={posterNotFound}
     />
   );
