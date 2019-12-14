@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.scss';
 
 import store from 'store/store';
-import Theme from 'components/Theme/Theme';
+import Theme from 'components/UI/Theme/Theme';
 import App from 'components/App';
 import { initAuthentication } from 'store/actions/authenticationActions';
 

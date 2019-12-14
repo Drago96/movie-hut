@@ -27,9 +27,10 @@ type Props = {
 const AuthenticationForm: React.FC<Props> = ({ component }) => {
   const classes = useStyles();
 
-  const [initiateRequest, { success, isLoading, error }] = useRequestSlice(
-    authenticationRequestSlice
-  );
+  const [
+    initiateRequest,
+    { success, isLoading, error }
+  ] = useRequestSlice(authenticationRequestSlice, { hideErrorSnackbar: true });
 
   const { handleClose } = useContext(DialogContext);
 

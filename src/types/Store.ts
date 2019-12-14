@@ -2,6 +2,7 @@ import { Action } from 'redux';
 import { Epic } from 'redux-observable';
 
 import { LoadingOverlayState } from 'store/slices/loadingOverlaySlice';
+import { ErrorSnackbarState } from 'store/slices/errorSnackbarSlice';
 import { State as AuthenticationState } from 'store/reducers/authenticationReducer';
 import ResponseState from './ResponseState';
 import GenreList from './GenreList';
@@ -27,4 +28,5 @@ export type ApplicationState = {
   homeData: HomeData;
   watchlistTogleRequest: WatchlistToggleResponse;
   watchlist: Pick<Watchlist, 'movies'>;
+  errorSnackbar: ErrorSnackbarState;
 };

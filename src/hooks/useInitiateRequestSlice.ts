@@ -9,6 +9,7 @@ export type UseInitiateRequestSliceOptions = {
   };
   showLoadingOverlay?: boolean;
   scrollToTop?: boolean;
+  hideErrorSnackbar?: boolean;
 };
 
 export type UseInitiateRequestSliceResult = ResponseResult & {

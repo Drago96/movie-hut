@@ -3,6 +3,7 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 
 import ResponseState from 'types/ResponseState';
 import useLoadingOverlay from './useLoadingOverlay';
+import useErrorSnackbar from './useErrorSnackbar';
 
 type RequestParams =
   | undefined
@@ -22,6 +23,7 @@ export type UseRequestSliceResult = [
 export type UseRequestSliceOptions = {
   showLoadingOverlay?: boolean;
   scrollToTop?: boolean;
+  hideErrorSnackbar?: boolean;
 };
 
 const useRequestSlice = <T extends any>(
@@ -50,6 +52,10 @@ const useRequestSlice = <T extends any>(
   }, [dispatch, slice]);
 
   useLoadingOverlay(options.showLoadingOverlay && isLoading);
+
+  const errorSnackbarMessage = options.hideErrorSnackbar ? null : error;
+
+  useErrorSnackbar(errorSnackbarMessage);
 
   const shouldScroll = Boolean(options.scrollToTop) && !isLoading;
 

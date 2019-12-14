@@ -8,6 +8,7 @@ import authenticationRequestSlice from 'store/slices/authenticationRequestSlice'
 import homeDataSlice from 'store/slices/homeDataSlice';
 import watchlistToggleRequestSlice from 'store/slices/watchlistToggleRequestSlice';
 import watchlistSlice from 'store/slices/watchlistSlice';
+import errorSnackbarSlice from 'store/slices/errorSnackbarSlice';
 import authenticationReducer from './authenticationReducer';
 
 export default combineReducers({
@@ -19,5 +20,6 @@ export default combineReducers({
   authentication: authenticationReducer,
   homeData: homeDataSlice.reducer,
   watchlistToggleRequest: watchlistToggleRequestSlice.reducer,
-  watchlist: watchlistSlice.reducer
+  watchlist: watchlistSlice.reducer,
+  errorSnackbar: errorSnackbarSlice.reducer
 });
