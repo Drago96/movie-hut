@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { ThemeProvider, CssBaseline } from '@material-ui/core';
+import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter } from 'react-router-dom';
 
 import './index.scss';
 
 import store from 'store/store';
-import theme from 'styles/theme';
+import Theme from 'components/Theme/Theme';
 import App from 'components/App';
 import { initAuthentication } from 'store/actions/authenticationActions';
 
@@ -18,10 +18,10 @@ store.dispatch(initAuthentication());
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
+      <Theme>
         <CssBaseline />
         <App />
-      </ThemeProvider>
+      </Theme>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')

@@ -30,6 +30,8 @@ const Authenticated: React.FC<Props> = ({ name }) => {
         onClick={handleClick}
         disableFocusRipple
         color="inherit"
+        variant="text"
+        className={classes.toolbarButton}
       >
         <AccountCircle className={classes.accountIcon} />
         {name}

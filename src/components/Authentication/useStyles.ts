@@ -10,6 +10,10 @@ const useStyles = makeStyles(theme => {
         paddingTop: 0
       }
     },
+    toolbarButton: {
+      backgroundColor: 'initial',
+      boxShadow: 'initial'
+    },
     tab: {
       flexGrow: 1,
       maxWidth: 'initial'

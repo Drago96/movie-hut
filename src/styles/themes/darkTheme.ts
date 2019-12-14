@@ -7,6 +7,11 @@ const theme = createMuiTheme({
       main: grey[900]
     },
     type: 'dark'
+  },
+  props: {
+    MuiButton: {
+      variant: 'outlined'
+    }
   }
 });
 

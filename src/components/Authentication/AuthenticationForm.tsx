@@ -3,7 +3,7 @@ import { Typography } from '@material-ui/core';
 
 import useRequestSlice from 'hooks/useRequestSlice';
 import authenticationRequestSlice, {
-  Type
+  Type as AuthenticationType
 } from 'store/slices/authenticationRequestSlice';
 import DialogContext from './DialogContext';
 import useStyles from './useStyles';
@@ -12,7 +12,7 @@ type OnSubmitHandler = (params: {
   email: string;
   password: string;
   name?: string;
-  type: Type;
+  authenticationType: AuthenticationType;
 }) => void;
 
 export type AuthenticationFormProps = {

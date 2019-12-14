@@ -50,6 +50,10 @@ const useStyles = makeStyles(theme => {
     },
     menu: {
       minWidth: 150
+    },
+    toolbarButton: {
+      backgroundColor: 'initial',
+      boxShadow: 'initial'
     }
   });
 });

@@ -52,7 +52,8 @@ const useStyles = makeStyles(theme => {
       outline: 'none'
     },
     pageLinkActive: {
-      backgroundColor: theme.palette.primary.main
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.common.white
     }
   });
 });

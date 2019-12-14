@@ -25,12 +25,10 @@ const ConfirmationDialog: React.FC<Props> = ({
       <DialogTitle>{message}</DialogTitle>
       <Divider />
       <DialogActions>
-        <Button variant="outlined" autoFocus onClick={onCancelClick}>
+        <Button autoFocus onClick={onCancelClick}>
           Cancel
         </Button>
-        <Button variant="outlined" onClick={onOkClick}>
-          Ok
-        </Button>
+        <Button onClick={onOkClick}>Ok</Button>
       </DialogActions>
     </Dialog>
   );

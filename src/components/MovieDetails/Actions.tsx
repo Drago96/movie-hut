@@ -35,7 +35,7 @@ const Actions: React.FC<Props> = ({ movie, watchlisted }) => {
       className={classes.actions}
       disabled={isLoading}
       onClick={handleToggleWatchlist}
-      variant="outlined"
+      // variant="outlined"
     >
       {watchlisted ? 'Remove from watchlist' : 'Add to watchlist'}
     </Button>

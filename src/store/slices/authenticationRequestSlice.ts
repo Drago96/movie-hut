@@ -12,7 +12,7 @@ type RequestPayload = {
   email: string;
   password: string;
   name?: string;
-  type: Type;
+  authenticationType: Type;
 };
 
 const ERROR_MAPPINGS: { [key: string]: string } = {
@@ -29,13 +29,13 @@ const authenticationRequestSlice = createRequestSlice<
   name: 'authenticationRequest',
   requestHandler: ({
     action: {
-      payload: { email, password, name, type }
+      payload: { email, password, name, authenticationType }
     },
     dependencies: { authenticationService }
   }) => {
     let authenticationRequest;
 
-    if (type === Type.Register) {
+    if (authenticationType === Type.Register) {
       if (!name) {
         return throwError({ code: 'auth/invalid-data' });
       }

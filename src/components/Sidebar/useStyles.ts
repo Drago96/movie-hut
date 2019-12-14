@@ -12,12 +12,17 @@ const useStyles = makeStyles(theme => {
       backgroundColor: theme.palette.primary.main,
       paddingTop: theme.spacing(1)
     },
+    itemIcon: {
+      color: theme.palette.common.white
+    },
     nestedItem: {
-      paddingLeft: theme.spacing(4)
+      paddingLeft: theme.spacing(4),
+      color: theme.palette.common.white
     },
     listItem: {
       paddingLeft: theme.spacing(3),
-      paddingRight: theme.spacing(3)
+      paddingRight: theme.spacing(3),
+      color: theme.palette.common.white
     }
   });
 });

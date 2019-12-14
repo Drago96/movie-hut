@@ -3,8 +3,11 @@ import { Button } from '@material-ui/core';
 
 import DialogContext from './DialogContext';
 import Dialog from './Dialog';
+import useStyles from './useStyles';
 
 const Authentication: React.FC = () => {
+  const classes = useStyles();
+
   const [open, setOpen] = useState(false);
 
   const handleOpen = useCallback(() => setOpen(true), [setOpen]);
@@ -12,7 +15,13 @@ const Authentication: React.FC = () => {
 
   return (
     <>
-      <Button disableFocusRipple onClick={handleOpen} color="inherit">
+      <Button
+        disableFocusRipple
+        onClick={handleOpen}
+        color="inherit"
+        variant="text"
+        className={classes.toolbarButton}
+      >
         Sign In
       </Button>
       <DialogContext.Provider value={{ open, handleOpen, handleClose }}>

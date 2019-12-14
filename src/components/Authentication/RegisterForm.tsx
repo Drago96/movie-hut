@@ -34,7 +34,7 @@ const RegisterForm: React.FC<Props> = ({ onSubmit, submitting }) => {
       onSubmit={({ email, password, name }, { setSubmitting }) => {
         setSubmitting(false);
 
-        onSubmit({ email, password, name, type: Type.Register });
+        onSubmit({ email, password, name, authenticationType: Type.Register });
       }}
     >
       <Form>
@@ -74,7 +74,7 @@ const RegisterForm: React.FC<Props> = ({ onSubmit, submitting }) => {
           disabled={submitting}
           fullWidth
           type="submit"
-          variant="outlined"
+          // variant="outlined"
         >
           Register
         </Button>

@@ -29,7 +29,7 @@ const LoginForm: React.FC<Props> = ({ onSubmit, submitting }) => {
       onSubmit={({ email, password }, { setSubmitting }) => {
         setSubmitting(false);
 
-        onSubmit({ email, password, type: Type.Login });
+        onSubmit({ email, password, authenticationType: Type.Login });
       }}
     >
       <Form>
@@ -53,7 +53,7 @@ const LoginForm: React.FC<Props> = ({ onSubmit, submitting }) => {
           disabled={submitting}
           fullWidth
           type="submit"
-          variant="outlined"
+          // variant="outlined"
         >
           Login
         </Button>

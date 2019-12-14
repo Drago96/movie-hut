@@ -19,7 +19,7 @@ const LoadingOverlay: React.FC = () => {
         paper: classes.paper
       }}
     >
-      <CircularProgress size={66} color="inherit" />
+      <CircularProgress size={66} className={classes.spinner} />
     </Dialog>
   );
 };

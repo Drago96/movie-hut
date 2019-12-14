@@ -24,7 +24,7 @@ const GenreList: React.FC<Props> = ({ genres }) => {
     <>
       <ListItem button onClick={toggleOpen} className={classes.listItem}>
         <ListItemIcon>
-          <MovieFilter />
+          <MovieFilter className={classes.itemIcon} />
         </ListItemIcon>
         <ListItemText primary="Genres" />
         {open ? <ExpandLess /> : <ExpandMore />}
