@@ -1,6 +1,6 @@
 import MovieListItem from './MovieListItem';
-import DataList from './DataList';
+import PaginatedList from './PaginatedList';
 
-type MovieList = DataList<MovieListItem>;
+type MovieList = PaginatedList<MovieListItem>;
 
 export default MovieList;

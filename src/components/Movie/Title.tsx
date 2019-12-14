@@ -11,7 +11,7 @@ type Props = OwnProps & TypographyProps;
 
 const Title: React.FC<Props> = ({ title, releaseDate, ...props }) => {
   return (
-    <Typography {...props} variant="h4" component="h1">
+    <Typography variant="h4" component="h1" {...props}>
       {title} ({releaseDate ? moment(releaseDate).year() : ''})
     </Typography>
   );

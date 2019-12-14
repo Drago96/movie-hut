@@ -6,6 +6,8 @@ import loadingOverlaySlice from 'store/slices/loadingOverlaySlice';
 import movieDetailsSlice from 'store/slices/movieDetailsSlice';
 import authenticationRequestSlice from 'store/slices/authenticationRequestSlice';
 import homeDataSlice from 'store/slices/homeDataSlice';
+import watchlistToggleRequestSlice from 'store/slices/watchlistToggleRequestSlice';
+import watchlistSlice from 'store/slices/watchlistSlice';
 import authenticationReducer from './authenticationReducer';
 
 export default combineReducers({
@@ -15,5 +17,7 @@ export default combineReducers({
   movieDetails: movieDetailsSlice.reducer,
   authenticationRequest: authenticationRequestSlice.reducer,
   authentication: authenticationReducer,
-  homeData: homeDataSlice.reducer
+  homeData: homeDataSlice.reducer,
+  watchlistToggleRequest: watchlistToggleRequestSlice.reducer,
+  watchlist: watchlistSlice.reducer
 });

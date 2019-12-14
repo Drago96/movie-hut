@@ -65,7 +65,7 @@ const PersonTable: React.FC<Props> = ({
         in={expand}
       >
         <Paper>
-          <Table aria-label="simple table">
+          <Table>
             <TableHead>
               <TableRow>
                 <TableCell className={classes.personImageColumn} />

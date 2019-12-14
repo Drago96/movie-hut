@@ -6,6 +6,6 @@ type MovieImageUrlParams = {
 type MovieImageUrl = (params: MovieImageUrlParams) => string;
 
 const createMovieImageUrl: MovieImageUrl = ({ relativeUrl, width }) =>
-  `https://image.tmdb.org/t/p/w${width}/${relativeUrl}`;
+  relativeUrl ? `https://image.tmdb.org/t/p/w${width}/${relativeUrl}` : '';
 
 export default createMovieImageUrl;

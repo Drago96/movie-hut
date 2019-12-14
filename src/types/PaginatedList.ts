@@ -1,8 +1,8 @@
 import Pagination from './Pagination';
 
-type DataList<T> = Pagination & {
+type PaginatedList<T> = Pagination & {
   results: T[];
   totalResults: number;
 };
 
-export default DataList;
+export default PaginatedList;

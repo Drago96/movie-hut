@@ -14,14 +14,19 @@ import Poster from 'components/Movie/Poster';
 import GenreList from 'components/Movie/GenreList';
 import formatMovieRating from 'utilities/formatMovieRating';
 import formatHour from 'utilities/formatHour';
+import useAuthentication from 'hooks/useAuthentication';
 import useStyles from './useStyles';
 import Vote from './Vote';
+import Actions from './Actions';
 
 type Props = {
   movie: Movie;
+  watchlisted: boolean;
 };
 
-const MovieCard: React.FC<Props> = ({ movie }) => {
+const MovieCard: React.FC<Props> = ({ movie, watchlisted }) => {
+  const { authenticated } = useAuthentication();
+
   const classes = useStyles();
 
   return (
@@ -35,12 +40,14 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
             title={movie.title}
           />
         )}
+        image={movie.title}
       />
       <CardContent className={classes.content}>
         <div className={classes.title}>
           <Title title={movie.title} releaseDate={movie.releaseDate} />
           <Divider className={classes.divider} orientation="vertical" />
           <Vote voteCount={movie.voteCount} voteAverage={movie.voteAverage} />
+          {authenticated && <Actions watchlisted={watchlisted} movie={movie} />}
         </div>
         <Typography
           className={classes.subtitle}

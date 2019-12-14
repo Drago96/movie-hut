@@ -9,8 +9,9 @@ import Credits from './Credits';
 
 const MovieDetails: React.FC = () => {
   const { id } = useParams();
+
   const { data } = useInitiateRequestSlice(movieDetailsSlice, {
-    params: { id },
+    params: { id: Number(id) },
     scrollToTop: true,
     showLoadingOverlay: true
   });
@@ -21,9 +22,12 @@ const MovieDetails: React.FC = () => {
 
   return (
     <>
-      <MovieCard movie={data.movie} />
+      <MovieCard movie={data.movie} watchlisted={data.watchlisted} />
       <Credits cast={data.credits.cast} crew={data.credits.crew} />
-      <MovieHorizontalList heading="Similar Movies" movies={data.similarMovies.results} />
+      <MovieHorizontalList
+        heading="Similar Movies"
+        movies={data.similarMovies.results}
+      />
     </>
   );
 };

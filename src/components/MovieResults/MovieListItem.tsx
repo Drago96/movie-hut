@@ -26,6 +26,7 @@ const MovieListItem: React.FC<Props> = ({ movie }) => {
             title={movie.title}
           />
         )}
+        image={movie.title}
       />
       <CardContent className={classes.content}>
         <Link

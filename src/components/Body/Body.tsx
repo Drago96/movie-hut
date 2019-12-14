@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Router from 'components/Router';
+import Router from 'components/Router/Router';
 import AppHeader from 'components/AppHeader/AppHeader';
 import Sidebar from 'components/Sidebar/Sidebar';
 import LoadingOverlay from 'components/UI/LoadingOverlay/LoadingOverlay';

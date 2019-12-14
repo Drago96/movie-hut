@@ -6,6 +6,7 @@ type MovieDetails = {
   movie: Movie;
   credits: Credits;
   similarMovies: MovieList;
+  watchlisted: boolean;
 };
 
 export default MovieDetails;

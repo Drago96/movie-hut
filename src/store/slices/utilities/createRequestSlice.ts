@@ -1,5 +1,10 @@
 import { createSlice, PayloadAction, AnyAction } from '@reduxjs/toolkit';
-import { switchMap, takeUntil, catchError, map } from 'rxjs/operators';
+import {
+  switchMap,
+  takeUntil,
+  catchError,
+  map
+} from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { ActionsObservable, StateObservable } from 'redux-observable';
 

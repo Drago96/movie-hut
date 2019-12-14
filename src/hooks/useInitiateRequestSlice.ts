@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import useRequestSlice, { ResponseResult } from './useRequestSlice';
 import useDeepEqualRef from './useDeepEqualRef';
@@ -11,10 +11,14 @@ export type UseInitiateRequestSliceOptions = {
   scrollToTop?: boolean;
 };
 
+export type UseInitiateRequestSliceResult = ResponseResult & {
+  reinitiate: () => void;
+};
+
 const useInitiateRequestSlice = <T extends any>(
   slice: T,
   options: UseInitiateRequestSliceOptions = {}
-): ResponseResult => {
+): UseInitiateRequestSliceResult => {
   const [
     initiateRequest,
     { isLoading, error, data, success }
@@ -22,15 +26,18 @@ const useInitiateRequestSlice = <T extends any>(
 
   const paramsForDispatch = useDeepEqualRef(options.params);
 
-  useEffect(() => initiateRequest(paramsForDispatch), [
+  const reinitiate = useCallback(() => initiateRequest(paramsForDispatch), [
     initiateRequest,
     paramsForDispatch
   ]);
+
+  useEffect(() => reinitiate(), [reinitiate]);
 
   return {
     isLoading,
     error,
     data,
+    reinitiate,
     success
   };
 };

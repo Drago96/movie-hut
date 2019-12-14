@@ -9,6 +9,8 @@ import MovieList from './MovieList';
 import Services from './Services';
 import MovieDetails from './MovieDetails';
 import HomeData from './HomeData';
+import WatchlistToggleResponse from './WatchlistToggleResponse';
+import Watchlist from './Watchlist';
 
 export type ApplicationEpic<
   TInputAction extends Action,
@@ -23,4 +25,6 @@ export type ApplicationState = {
   authenticationRequest: ResponseState<any>;
   authentication: AuthenticationState;
   homeData: HomeData;
+  watchlistTogleRequest: WatchlistToggleResponse;
+  watchlist: Pick<Watchlist, 'movies'>;
 };

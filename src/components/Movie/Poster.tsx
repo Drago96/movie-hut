@@ -1,4 +1,4 @@
-import React, { ImgHTMLAttributes } from 'react';
+import React, { ImgHTMLAttributes, forwardRef } from 'react';
 
 import ImgWithFallback from 'components/UI/ImgWithFallback/ImgWithFallback';
 import posterNotFound from 'assets/images/poster-not-found.jpg';
@@ -12,19 +12,22 @@ type OwnProps = {
 
 type Props = OwnProps & ImgHTMLAttributes<any>;
 
-const Poster: React.FC<Props> = ({ posterPath, title, width, ...props }) => {
-  return (
-    <ImgWithFallback
-      {...props}
-      src={createMovieImageUrl({
-        width,
-        relativeUrl: posterPath
-      })}
-      alt={title}
-      title={title}
-      fallbackUrl={posterNotFound}
-    />
-  );
-};
+const Poster = forwardRef<HTMLImageElement, Props>(
+  ({ posterPath, title, width, ...props }, ref) => {
+    return (
+      <ImgWithFallback
+        {...props}
+        src={createMovieImageUrl({
+          width,
+          relativeUrl: posterPath
+        })}
+        alt={title}
+        title={title}
+        fallbackUrl={posterNotFound}
+        ref={ref}
+      />
+    );
+  }
+);
 
 export default Poster;

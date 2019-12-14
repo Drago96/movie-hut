@@ -1,4 +1,5 @@
 import firebaseApi from './api/firebaseApi';
+import * as watchlistService from './watchlistService';
 
 type LoginParams = {
   email: string;
@@ -24,6 +25,13 @@ export const register = ({ email, password, name }: RegisterParams) =>
       return response.user
         .updateProfile({
           displayName: name
+        })
+        .then(() => {
+          if (response.user === null) {
+            return Promise.reject(new Error('Something went wrong'));
+          }
+
+          return watchlistService.create(response.user.uid);
         })
         .then(() => response);
     });

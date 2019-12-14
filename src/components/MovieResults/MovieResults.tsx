@@ -4,6 +4,7 @@ import useMovieListSlice, {
   UseMovieListSliceOptions
 } from 'hooks/useMovieListSlice';
 import Heading from 'components/UI/Heading/Heading';
+import NoResultsFound from 'components/UI/NoResultsFound/NoResultsFound';
 import MovieList from './MovieList';
 import useStyles from './useStyles';
 
@@ -28,12 +29,15 @@ const MovieResults: React.FC<Props> = ({ url, params, heading }) => {
   return (
     <>
       {heading && <Heading className={classes.heading}>{heading}</Heading>}
-      <MovieList
-        movies={data.results}
-        page={data.page}
-        totalPages={data.totalPages}
-        totalResults={data.totalResults}
-      />
+      {data.totalResults === 0 ? (
+        <NoResultsFound />
+      ) : (
+        <MovieList
+          movies={data.results}
+          page={data.page}
+          totalPages={data.totalPages}
+        />
+      )}
     </>
   );
 };

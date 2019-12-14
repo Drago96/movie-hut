@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { groupBy, map, first } from 'lodash';
+import { groupBy, map, first, pick } from 'lodash';
 import { Movie, Person as PersonIcon } from '@material-ui/icons';
 
 import CastPerson from 'types/CastPerson';
@@ -12,32 +12,47 @@ type Props = {
   crew: CrewPerson[];
 };
 
+function isCastPerson(person: CastPerson | CrewPerson): person is CastPerson {
+  return (person as CastPerson).character !== undefined;
+}
+
+const personsForTable = (persons: CastPerson[] | CrewPerson[]) =>
+  map(groupBy(persons, 'id'), anyPersonEntries => {
+    const personEntries = map(
+      anyPersonEntries,
+      person => person as CastPerson | CrewPerson
+    );
+
+    const personRole = personEntries
+      .map(person => {
+        if (isCastPerson(person)) {
+          return person.character;
+        }
+
+        return person.job;
+      })
+      .join(', ');
+
+    const personAttributes = pick(first(personEntries), [
+      'id',
+      'name',
+      'profilePath'
+    ]);
+
+    return {
+      ...personAttributes,
+      role: personRole
+    };
+  }) as Person[];
+
 const Credits: React.FC<Props> = ({ cast, crew }) => {
-  const crewMembersForTable = useMemo(
-    () =>
-      map(groupBy(crew, 'id'), crewMemberEntries => {
-        const allCrewMemberJobs = crewMemberEntries
-          .map(position => position.job)
-          .join(', ');
+  const crewMembersForTable = useMemo(() => personsForTable(crew) as Person[], [
+    crew
+  ]);
 
-        return {
-          ...first(crewMemberEntries),
-          role: allCrewMemberJobs
-        };
-      }) as Person[],
-    [crew]
-  );
-
-  const castMembersForTable = useMemo(
-    () =>
-      map(cast, castMember => {
-        return {
-          ...castMember,
-          role: castMember.character
-        };
-      }) as Person[],
-    [cast]
-  );
+  const castMembersForTable = useMemo(() => personsForTable(cast) as Person[], [
+    cast
+  ]);
 
   return (
     <>

@@ -85,6 +85,9 @@ const useStyles = makeStyles(theme => {
     backToTopLink: {
       cursor: 'pointer',
       display: 'inline-block'
+    },
+    actions: {
+      marginLeft: theme.spacing(2)
     }
   });
 });
