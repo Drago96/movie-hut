@@ -53,7 +53,6 @@ const LoginForm: React.FC<Props> = ({ onSubmit, submitting }) => {
           disabled={submitting}
           fullWidth
           type="submit"
-          // variant="outlined"
         >
           Login
         </Button>

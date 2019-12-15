@@ -74,7 +74,6 @@ const RegisterForm: React.FC<Props> = ({ onSubmit, submitting }) => {
           disabled={submitting}
           fullWidth
           type="submit"
-          // variant="outlined"
         >
           Register
         </Button>
