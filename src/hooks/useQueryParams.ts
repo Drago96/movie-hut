@@ -1,6 +1,6 @@
 import { useLocation, useHistory } from 'react-router';
 import queryString, { ParsedQuery } from 'query-string';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 type UseQueryParams = () => {
   params: ParsedQuery<string>;
@@ -11,7 +11,10 @@ const useQueryParams: UseQueryParams = () => {
   const location = useLocation();
   const history = useHistory();
 
-  const queryParams = queryString.parse(location.search);
+  const queryParams = useMemo(() => queryString.parse(location.search), [
+    location.search
+  ]);
+
   const updateQueryParams = useCallback(
     (queryParamsToUpdate: ParsedQuery<string>) => {
       history.push(
