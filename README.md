@@ -33,4 +33,4 @@ The project is build using React with Typescript. It is split into separate fold
 
 Other key points include:
 - Material UI is used for building the application's UI layer
-- Formik is used for form mannagement
+- Formik is used for form management
